@@ -30,7 +30,7 @@ const SCENARIOS: Scenario[] = [
         "Supplier Yamaguchi inbound IR-9921: hardness 56 HRC vs. 58 HRC spec, accepted by deviation.",
         "Cell 3 spindle calibration last logged 11 months ago; predictive-maintenance alert raised 38 days ago, unactioned.",
         "Two 8D cases on the same geometry (2017, 2021) flagged lubricant viscosity at low temperatures.",
-        "Cost impact: €38,400 in scrap + €12,200 rework on this part alone over 6 weeks.",
+        "Cost impact: $38,400 in scrap + $12,200 rework on this part alone over 6 weeks.",
       ],
       confidence: 0.92,
       sources: 1418,
@@ -43,12 +43,12 @@ const SCENARIOS: Scenario[] = [
       "Customer pulled in delivery by 3 weeks. Which qualified suppliers can hold tolerance on the 71042 housing at 4-week lead time?",
     answer: {
       headline:
-        "Three AVL suppliers can hold ±0.02 mm at 4 weeks; Kessler GmbH is the lowest risk.",
+        "Three AVL suppliers can hold ±0.0008 in at 4 weeks; Kessler GmbH is the lowest risk.",
       findings: [
         "Kessler GmbH — audit score 92/100, on-time 97%, similar geometry shipped 14× since 2019.",
         "Yamaguchi Precision — audit 88/100, currently on quality hold (see IR-9921).",
         "Brescia Meccanica — audit 84/100, never quoted this geometry; tooling lead time +2 weeks.",
-        "Quoted unit cost range €17.10–€18.40; current actual €17.85.",
+        "Quoted unit cost range $17.10–$18.40; current actual $17.85.",
       ],
       confidence: 0.87,
       sources: 612,

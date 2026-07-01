@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { NeuralExplorer } from "@/components/NeuralExplorer";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -53,19 +52,8 @@ function BetaBadge() {
         <span className="absolute inset-0 animate-ping rounded-full bg-emerald-600 opacity-60" />
         <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-600" />
       </span>
-      Phase 1 + 2 — Beta Live
+      Beta Live
     </span>
-  );
-}
-
-function Phase5PreviewLabel() {
-  return (
-    <div className="mb-6 border-l-2 border-brass bg-bone-surface/60 px-4 py-3">
-      <p className="eyebrow text-brass">Preview</p>
-      <p className="mt-1 text-sm leading-relaxed text-ink-soft">
-        This is our Phase 5 vision, not a live feature yet.
-      </p>
-    </div>
   );
 }
 
@@ -83,8 +71,6 @@ function Landing() {
         <ScrollReveal><Sovereignty /></ScrollReveal>
         <SectionRule />
         <ScrollReveal><Pain /></ScrollReveal>
-        <SectionRule />
-        <ScrollReveal><Outcome /></ScrollReveal>
         <SectionRule />
         <ScrollReveal><Demo /></ScrollReveal>
         <SectionRule />
@@ -118,7 +104,6 @@ function Nav() {
         <nav className="hidden items-center gap-8 text-sm text-ink-soft md:flex">
           <a href="#problem" className="hover:text-ink transition-colors">Problem</a>
           <a href="#sovereignty" className="hover:text-ink transition-colors">Sovereignty</a>
-          <a href="#how" className="hover:text-ink transition-colors">Roadmap</a>
           <a href="#demo" className="hover:text-ink transition-colors">Preview</a>
           <a href="#faq" className="hover:text-ink transition-colors">FAQ</a>
         </nav>
@@ -161,16 +146,12 @@ function Hero() {
             </p>
             <div className="mt-8">
               <AccessForm compact />
-              <p className="mt-3 text-xs text-ink-muted">
-                Phase 1 + 2 live in beta. Nothing leaves your network.
-              </p>
             </div>
           </div>
         </div>
 
         <div className="mx-auto max-w-[1240px] px-6 pb-24 md:px-10 md:pb-32">
           <div className="mt-20 md:mt-24">
-            <Phase5PreviewLabel />
             <NeuralExplorer />
           </div>
         </div>
@@ -210,7 +191,7 @@ function Pain() {
     <section id="problem" className="mx-auto max-w-[1240px] px-6 py-20 md:px-10 md:py-28">
       <div className="grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Eyebrow index="01" label="The problem" />
+          <Eyebrow index="02" label="The problem" />
           <h2 className="font-display mt-8 text-[2rem] font-medium leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.75rem]">
             Your data isn&apos;t lost.
             <br />
@@ -229,173 +210,6 @@ function Pain() {
           </div>
         </div>
       </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  How it works — 5-step product roadmap                               */
-/* ------------------------------------------------------------------ */
-
-type PhaseStatus = "live" | "soon";
-
-type Phase = {
-  n: number;
-  title: string;
-  status: PhaseStatus;
-  statusLabel: string;
-  summary?: string;
-  bullets?: string[];
-};
-
-const PHASES: Phase[] = [
-  {
-    n: 1,
-    title: "Find Every File. Instantly.",
-    status: "live",
-    statusLabel: "BETA — LIVE NOW",
-    bullets: [
-      "Your drive has one master list. Windows keeps it. Hidden. Built-in.",
-      "We read that list directly. We don't click through folders. We don't open files. Just the list.",
-      "One million files. Under 5 seconds. Most search tools take minutes.",
-      "It stays current. New file saved? Shows up in under a second. No re-scanning. Ever. Watches the drive live, in the background.",
-      "Runs on your machine only. Nothing leaves. No cloud. No internet. Not a promise — the program physically can't send data out. We checked.",
-    ],
-  },
-  {
-    n: 2,
-    title: "Sort Every File. Automatically.",
-    status: "live",
-    statusLabel: "BETA — LIVE NOW",
-    bullets: [
-      "Every file gets tagged. Drawing. Quality report. Test data. Quote. Automatically. No setup required on day one.",
-      "How: reads file names and folder names only. Never opens the file.",
-      "Works at any company. Every company names things differently — we know that. It starts with smart defaults, then learns YOUR company's naming style every time you correct a mistake. One correction, remembered forever. No retraining needed.",
-      "Groups by part. A drawing, its FMEA, its test report — same part, different file types — grouped together as one item. Versions lined up in order: Rev A, Rev B, Rev C.",
-      "Same rule as Phase 1: stays on your machine. Nothing leaves.",
-    ],
-  },
-  {
-    n: 3,
-    title: "Read What's Inside",
-    status: "soon",
-    statusLabel: "Coming Soon",
-    summary:
-      "Pulls real data out of files. Part numbers. Specs. Test results. Not just names anymore — actual content.",
-  },
-  {
-    n: 4,
-    title: "Connect The Dots",
-    status: "soon",
-    statusLabel: "Coming Soon",
-    summary:
-      "Links files across years. Same part, same failure, different folders, different filenames. Found anyway.",
-  },
-  {
-    n: 5,
-    title: "Ask It Anything",
-    status: "soon",
-    statusLabel: "Coming Soon",
-    summary:
-      "One question. One answer. Pulled from everything at once. The full Company Brain.",
-  },
-];
-
-function PhaseStatusBadge({ status, label }: { status: PhaseStatus; label: string }) {
-  if (status === "live") {
-    return (
-      <span className="inline-flex items-center gap-1.5 eyebrow text-emerald-700">
-        <Check className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden />
-        Live Now
-      </span>
-    );
-  }
-  return <span className="eyebrow text-ink-muted/70">{label}</span>;
-}
-
-function Outcome() {
-  return (
-    <section id="how" className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-36">
-      <div className="max-w-3xl">
-        <Eyebrow index="02" label="How it works" />
-        <h2 className="font-display mt-8 text-[2rem] font-medium leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.6rem]">
-          Five phases.
-          <br />
-          <span className="text-brass">Two live today.</span>
-        </h2>
-        <p className="mt-8 max-w-[42ch] text-[1.0625rem] leading-[1.7] text-ink-soft">
-          Factory Engine ships in phases. Phase 1 and 2 are in beta now — fully local, on your machine.
-        </p>
-      </div>
-
-      {/* Desktop: horizontal roadmap */}
-      <div className="mt-16 hidden md:block">
-        <div className="relative grid grid-cols-5 gap-0">
-          <div className="absolute left-[10%] right-[10%] top-5 h-px bg-rule" aria-hidden />
-          {PHASES.map((phase) => (
-            <div key={phase.n} className="relative flex flex-col items-center px-2 text-center">
-              <div
-                className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border font-display text-sm tabular-nums ${
-                  phase.status === "live"
-                    ? "border-emerald-700 bg-bone text-emerald-800"
-                    : "border-rule bg-bone-surface/60 text-ink-muted"
-                }`}
-              >
-                {phase.status === "live" ? (
-                  <Check className="h-4 w-4" strokeWidth={2.5} aria-hidden />
-                ) : (
-                  phase.n
-                )}
-              </div>
-              <p className="mt-4 font-display text-[0.95rem] font-medium leading-snug tracking-tight text-ink">
-                {phase.title}
-              </p>
-              <div className="mt-2">
-                <PhaseStatusBadge status={phase.status} label={phase.statusLabel} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Phase detail blocks */}
-      <ol className="mt-12 space-y-10 md:mt-20">
-        {PHASES.map((phase) => (
-          <li
-            key={phase.n}
-            className={`border-t border-rule pt-10 ${phase.status === "soon" ? "opacity-80" : ""}`}
-          >
-            <div className="grid gap-6 md:grid-cols-12">
-              <div className="md:col-span-4">
-                <span className="eyebrow text-brass">Phase {phase.n}</span>
-                <h3 className="font-display mt-3 text-[1.4rem] font-medium leading-tight tracking-[-0.015em] text-ink md:text-[1.65rem]">
-                  {phase.title}
-                </h3>
-                <div className="mt-3">
-                  <PhaseStatusBadge status={phase.status} label={phase.statusLabel} />
-                </div>
-                {phase.status === "live" && (
-                  <p className="mt-2 eyebrow text-ink-muted">{phase.statusLabel}</p>
-                )}
-              </div>
-              <div className="md:col-span-8">
-                {phase.bullets ? (
-                  <ul className="space-y-3 text-[0.98rem] leading-[1.7] text-ink-soft">
-                    {phase.bullets.map((b) => (
-                      <li key={b} className="flex gap-3">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass" aria-hidden />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-[1rem] leading-[1.7] text-ink-soft">{phase.summary}</p>
-                )}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 }
@@ -420,7 +234,7 @@ const FINDINGS = [
   {
     n: "03",
     domain: "Cost",
-    line: "Unit cost moved from €14.20 (2014) to €17.85 (2024). Raw steel index explains 71% of the drift; tooling amortisation, the rest.",
+    line: "Unit cost moved from $14.20 (2014) to $17.85 (2024). Raw steel index explains 71% of the drift; tooling amortisation, the rest.",
     meta: "Cost · CR-BRG-2024-Q2.xlsx",
   },
   {
@@ -444,7 +258,6 @@ function Demo() {
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-4">
             <Eyebrow index="03" label="A worked example" />
-            <Phase5PreviewLabel />
             <h2 className="font-display mt-4 text-[2rem] font-medium leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.6rem]">
               “Tell me everything about the bearing assembly.”
             </h2>
@@ -488,10 +301,6 @@ function Demo() {
 /* ------------------------------------------------------------------ */
 
 const FAQS = [
-  {
-    q: "What can I actually use today?",
-    a: "Phase 1 and 2 are live in beta: instant file search and automatic file sorting by type and part, fully local. Cross-document answers (Phase 5) are on the roadmap, not yet available.",
-  },
   {
     q: "Does any of our data leave our network?",
     a: "No. Factory Engine runs on your machine or inside your private cloud. Nothing crosses your firewall. No document is uploaded to a third party, and your data is never used to train any model.",
@@ -587,8 +396,7 @@ function FinalCta() {
             on your machine.
           </h2>
           <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.7] text-ink-soft">
-            Phase 1 and 2 are live in beta. Sign up and we&apos;ll send install
-            instructions for the working tool on your network.
+            Sign up and we&apos;ll send install instructions for the working tool on your network.
           </p>
         </div>
         <div className="md:col-span-5 md:pt-16">
@@ -689,7 +497,7 @@ function Sovereignty() {
     <section id="sovereignty" className="mx-auto max-w-[1240px] px-6 py-24 md:px-10 md:py-36">
       <div className="grid gap-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Eyebrow index="0·" label="Sovereignty" />
+          <Eyebrow index="01" label="Sovereignty" />
           <h2 className="font-display mt-8 text-[2rem] font-medium leading-[1.1] tracking-[-0.02em] text-ink md:text-[2.6rem]">
             Local by architecture.
             <br />
@@ -741,7 +549,6 @@ function _Footer() {
         <div className="md:col-span-3 md:col-start-7">
           <div className="eyebrow text-ink-muted">Platform</div>
           <ul className="mt-4 space-y-2 text-sm text-ink-soft">
-            <li><a className="hover:text-ink" href="#how">How it works</a></li>
             <li><a className="hover:text-ink" href="#demo">Worked example</a></li>
             <li><a className="hover:text-ink" href="#faq">FAQ</a></li>
           </ul>
