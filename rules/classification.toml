@@ -1,0 +1,51 @@
+﻿[settings]
+confidence_threshold = 0.55
+unclassified_label = "Unclassified — Needs Review"
+
+[[categories]]
+name = "Drawing"
+extensions = ["pdf", "dwg", "dxf"]
+folder_tokens = ["drawings", "prints"]
+filename_keywords = ["DRW", "DRAWING"]
+
+[[categories]]
+name = "CAD Model"
+extensions = ["sldprt", "step", "stp"]
+folder_tokens = ["cad", "models"]
+filename_keywords = ["CAD", "STEP"]
+
+[[categories]]
+name = "Quality"
+extensions = ["xlsx", "pdf"]
+folder_tokens = ["quality", "fmea", "ppap"]
+filename_keywords = ["FMEA", "RCA", "8D", "NCR"]
+
+[[categories]]
+name = "Test/Simulation Report"
+extensions = ["csv", "xlsx"]
+folder_tokens = ["test", "simulation"]
+filename_keywords = ["TEST", "SIM", "FEA"]
+
+[[categories]]
+name = "Supplier/Quote"
+extensions = ["pdf", "xlsx"]
+folder_tokens = ["supplier", "quotes"]
+filename_keywords = ["QTN", "PO", "RFQ"]
+
+[[categories]]
+name = "Manufacturing/Production Data"
+extensions = ["xlsx", "csv"]
+folder_tokens = ["manufacturing", "production"]
+filename_keywords = ["BOM", "TRAVELER"]
+
+[[categories]]
+name = "Correspondence"
+extensions = ["msg", "eml", "pdf"]
+folder_tokens = ["correspondence"]
+filename_keywords = ["EMAIL", "MEMO"]
+
+[[categories]]
+name = "Other"
+extensions = []
+folder_tokens = []
+filename_keywords = ["SPEC", "REV"]

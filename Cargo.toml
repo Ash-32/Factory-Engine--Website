@@ -1,0 +1,48 @@
+[package]
+name = "ntfs-catalog"
+version = "0.1.0"
+edition = "2021"
+description = "EngineVault — NTFS engineering file catalog with branch-tree dashboard"
+license = "MIT"
+
+[lib]
+name = "ntfs_catalog"
+path = "src/lib.rs"
+
+[[bin]]
+name = "ntfs-catalog"
+path = "src/main.rs"
+
+[[bin]]
+name = "EngineVault"
+path = "src/bin/engine_vault.rs"
+
+[dependencies]
+anyhow = "1"
+bytemuck = { version = "1", features = ["derive"] }
+clap = { version = "4", features = ["derive"] }
+directories = "5"
+eframe = { version = "0.29", default-features = false, features = ["default_fonts", "glow"] }
+egui = "0.29"
+egui_extras = { version = "0.29", features = ["svg"] }
+memmap2 = "0.9"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_Storage_FileSystem",
+    "Win32_System_IO",
+    "Win32_System_Ioctl",
+] }
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
